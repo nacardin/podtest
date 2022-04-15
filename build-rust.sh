@@ -16,7 +16,7 @@ mkdir -p $SWIFT_BRIDGE_OUT_DIR
 # cargo build --target aarch64-apple-darwin
 cargo build --target aarch64-apple-ios-sim --release
 cargo build --target aarch64-apple-ios --release
-cargo build --target x86_64-apple-ios --release
+# cargo build --target x86_64-apple-ios --release
 
 #for OS in iphoneos iphonesimulator macosx; do
 #	xcrun -sdk $OS --show-sdk-path
@@ -26,6 +26,8 @@ cargo build --target x86_64-apple-ios --release
 #	xcrun -sdk $OS --show-sdk-platform-version
 #done
 
+rm -r FluvioClientSwift/RustXcframework.xcframework || true
+
 swift-bridge-cli create-package \
   --bridges-dir ./generated \
   --out-dir FluvioClientSwift \
@@ -33,3 +35,5 @@ swift-bridge-cli create-package \
   --simulator target/aarch64-apple-ios-sim/release/libfluvio_client_swift.a \
   --name FluvioClientSwift
 sed -i '' 's/rust_framework/RustXcframework/g' ./FluvioClientSwift/Package.swift
+
+mv FluvioClientSwift/rust_framework.xcframework FluvioClientSwift/RustXcframework.xcframework
