@@ -25,7 +25,9 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
-  asdafs
+  A short asd description of FluvioClientSwift.
+  A short asd description of FluvioClientSwift.
+  A short asd description of FluvioClientSwift.
                    DESC
 
   spec.homepage     = "https://github.com/infinyon/fluvio-client-swift"
@@ -39,8 +41,7 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  spec.license      = "MIT"
-  # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  spec.license      = { :type => "Apache License, Version 2.0", :file => "LICENSE" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -73,6 +74,9 @@ Pod::Spec.new do |spec|
   # spec.watchos.deployment_target = "2.0"
   # spec.tvos.deployment_target = "9.0"
 
+  spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'x86_64' }
+  spec.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'x86_64' }
+
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -80,7 +84,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "git@github.com:infinyon/fluvio-client-swift.git", :tag => "#{spec.version}" }
+  spec.source       = { :http => "https://github.com/nacardin/podtest/archive/refs/tags/0.0.1.zip" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -91,7 +95,7 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "FluvioClientSwift/Sources", "FluvioClientSwift/Sources/**/*.{swift}"
+  spec.source_files  = "podtest-0.0.1/FluvioClientSwift/Sources", "podtest-0.0.1/FluvioClientSwift/Sources/**/*.{swift}"
   # spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
@@ -121,7 +125,7 @@ Pod::Spec.new do |spec|
   # spec.frameworks = "SomeFramework", "AnotherFramework"
 
   # spec.framework  = "RustXcframework.xcframework"
-  spec.vendored_frameworks  = "FluvioClientSwift/RustXcframework.xcframework"
+  spec.vendored_frameworks  = "podtest-0.0.1/FluvioClientSwift/RustXcframework.xcframework"
 
   # spec.library   = "iconv"
   # spec.libraries = "iconv", "xml2"
